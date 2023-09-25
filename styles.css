@@ -1,0 +1,60 @@
+body, html{
+    height: 100%;  
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container{
+    
+    display: grid;
+    grid-template-areas:
+        "square-1 square-2 square-3"
+        "square-4 square-5 square-6"
+        "square-7 square-8 square-9";
+    
+}
+
+.grid-item{
+    border: solid;
+    height: 200px;
+    width: 200px;
+}
+
+#square-1{
+    border-top: 0;
+    border-left: 0;
+}
+
+#square-2{
+    
+}
+
+#square-3{
+    
+}
+
+#square-4{
+    
+}
+
+#square-5{
+    
+}
+
+#square-6{
+
+}
+
+#square-7{
+    
+}
+
+#square-8{
+    
+}
+
+#square-9{
+    
+}
