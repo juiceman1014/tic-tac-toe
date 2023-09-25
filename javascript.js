@@ -1,10 +1,16 @@
-let gameBoard ={
-    grid: [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-    ]
-};
+const gameBoardModule = (function (){
+    const grid = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+        ];
+
+    return{
+        getGrid: function(){
+            return grid;
+        }
+    };
+})();
 
 const playerFactory = (name, symbol) => {
     return {name, symbol};
