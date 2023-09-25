@@ -6,6 +6,22 @@ let gameBoard ={
     ]
 };
 
-let players;
+let players = {
+    player1:{
+        name: "Player 1",
+        symbol: "X"
+    },
+    player2: {
+        name: "Player 2",
+        symbol: "O"
+    }
+};
 
-let gameFlow;
+let gameFlow = {
+    startGame: function(){
+
+    },
+    endGame: function(){
+
+    }
+};
