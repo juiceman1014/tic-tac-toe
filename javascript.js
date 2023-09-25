@@ -6,16 +6,9 @@ let gameBoard ={
     ]
 };
 
-let players = {
-    player1:{
-        name: "Player 1",
-        symbol: "X"
-    },
-    player2: {
-        name: "Player 2",
-        symbol: "O"
-    }
-};
+const playerFactory = (name, symbol) => {
+    return {name, symbol};
+}
 
 let gameFlow = {
     startGame: function(){
