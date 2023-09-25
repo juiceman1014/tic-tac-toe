@@ -10,11 +10,29 @@ const playerFactory = (name, symbol) => {
     return {name, symbol};
 }
 
-let gameFlow = {
-    startGame: function(){
+const gameFlowModule = (() => {
+    let isGameActive = true;
+    let currentPlayer = null;
 
-    },
-    endGame: function(){
+    const switchPlayer = () => {
+        currentPlayer = (currentPlayer === players.player1) ? players.player2 : players.player1;
+    };
 
+    const startGame = () => {
+        isGameActive = true;
+        currentPlayer  = players.player1;
+    };
+
+    const endGame = () => {
+        isGameActive = false;
+    };
+
+    //public
+    return {
+        isGameActive,
+        currentPlayer,
+        switchPlayer,
+        startGame,
+        endGame,
     }
-};
+})();
