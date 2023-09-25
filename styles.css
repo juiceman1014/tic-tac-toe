@@ -28,15 +28,16 @@ body, html{
 }
 
 #square-2{
-    
+    border-top: 0;
 }
 
 #square-3{
-    
+    border-top: 0;
+    border-right: 0;
 }
 
 #square-4{
-    
+    border-left: 0;
 }
 
 #square-5{
@@ -44,17 +45,20 @@ body, html{
 }
 
 #square-6{
-
+    border-right: 0;
 }
 
 #square-7{
-    
+    border-left: 0;
+    border-bottom: 0;
 }
 
 #square-8{
+    border-bottom: 0;
     
 }
 
 #square-9{
-    
+    border-bottom: 0;
+    border-right: 0;
 }
