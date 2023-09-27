@@ -20,6 +20,9 @@ body, html{
     border: solid;
     height: 200px;
     width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #square-1{
@@ -38,10 +41,6 @@ body, html{
 
 #square-4{
     border-left: 0;
-}
-
-#square-5{
-    
 }
 
 #square-6{
