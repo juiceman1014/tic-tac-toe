@@ -16,46 +16,40 @@ const playerFactory = (name, symbol) => {
     return {name, symbol};
 }
 
+const player1 = playerFactory("Player1", "X");
+const player2 = playerFactory("Player2", "O");
+
 const gameFlowModule = (() => {
-    let isGameActive = true;
+    let isGameActive = null;
     let currentPlayer = null;
 
     const switchPlayer = () => {
-        currentPlayer = (currentPlayer === players.player1) ? players.player2 : players.player1;
+        currentPlayer = (currentPlayer === player1) ? player2 : player1;
     };
 
     const startGame = () => {
         isGameActive = true;
-        currentPlayer  = players.player1;
+        currentPlayer  = player1;
     };
 
     const endGame = () => {
         isGameActive = false;
     };
 
+    const getIsGameActive = () => isGameActive;
+    const getCurrentPlayer = () => currentPlayer;
+
     //public
     return {
-        isGameActive,
-        currentPlayer,
+        getIsGameActive,
+        getCurrentPlayer,
         switchPlayer,
         startGame,
         endGame,
     }
 })();
 
-//create an event listener that allows user to place marker
-//create a reference to each grid item
 const squares = document.querySelectorAll(".grid-item");
-
-//player 1 
-//player 2 
-
-//console.log(gameFlowModule.currentPlayer);
-
-
-let player1 = playerFactory("Player1", "X");
-
-gameFlowModule.currentPlayer = player1;
 
 squares.forEach((square) =>{
     square.addEventListener("click", () => {
