@@ -37,12 +37,15 @@ const gameFlowModule = (() => {
     };
 
     const getIsGameActive = () => isGameActive;
-    const getCurrentPlayer = () => currentPlayer;
+
+    const getCurrentPlayerName = () => currentPlayer.name;
+    const getCurrentPlayerSymbol = () => currentPlayer.symbol;
 
     //public
     return {
         getIsGameActive,
-        getCurrentPlayer,
+        getCurrentPlayerName,
+        getCurrentPlayerSymbol,
         switchPlayer,
         startGame,
         endGame,
@@ -51,7 +54,12 @@ const gameFlowModule = (() => {
 
 const squares = document.querySelectorAll(".grid-item");
 
+gameFlowModule.startGame();
+console.log(gameFlowModule.getCurrentPlayerName());
+console.log(gameFlowModule.getCurrentPlayerSymbol());
+
 squares.forEach((square) =>{
+    //gameFlowModule.startGame();
     square.addEventListener("click", () => {
         square.textContent = "x";
     })
