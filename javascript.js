@@ -59,40 +59,24 @@ const gameFlowModule = (() => {
 const squares = document.querySelectorAll(".grid-item");
 
 gameFlowModule.startGame();
-console.log(gameFlowModule.getCurrentPlayerName());
-console.log(gameFlowModule.getCurrentPlayerSymbol());
-
-//gameFlowModule.startGame();
-    // square.addEventListener("click", () => {
-    //     square.textContent = "x";
-    // })
-    //start game
-    //while isGameActive = true;
-        //if currentPlayer === player1
-            //let player1 play
-            //switch to secondPlayer
-        //else if currentPlayer === player2
-            //let player2 play
-            //switch to first player
-
 squares.forEach((square) =>{
-        
-    gameFlowModule.startGame();
+    square.addEventListener("click", () => {
     if(gameFlowModule.getIsGameActive() === true){
         if (gameFlowModule.getCurrentPlayerName() === "Player1"){
-            square.addEventListener("click", () =>{
+            if(square.textContent.trim() === ""){
                 square.textContent = gameFlowModule.getCurrentPlayerSymbol();
                 gameFlowModule.switchPlayer();
-            })
-        }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
-            square.addEventListener("click", () =>{
-                square.textContent = gameFlowModule.getCurrentPlayerSymbol();
-                gameFlowModule.switchPlayer();
-            })
         }
-    }
 
-
+        }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
+            if(square.textContent.trim() === ""){
+            
+                square.textContent = gameFlowModule.getCurrentPlayerSymbol();
+                gameFlowModule.switchPlayer();
+        }
+        }
+     }
+    }) 
 })
 
 //if currentPlayer === player 1; next click places an X
