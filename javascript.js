@@ -22,6 +22,7 @@ const player2 = playerFactory("Player2", "O");
 const gameFlowModule = (() => {
     let isGameActive = null;
     let currentPlayer = null;
+    let winner = null;
 
     const switchPlayer = () => {
         currentPlayer = (currentPlayer === player1) ? player2 : player1;
@@ -36,14 +37,51 @@ const gameFlowModule = (() => {
         isGameActive = false;
     };
 
-    const checkWin = () => {
-
+    const checkWin = () => { 
+        //Check for "X" win
+        if(gameBoardModule.getGrid()[0][0] == "X" && gameBoardModule.getGrid()[0][1] == "X" && gameBoardModule.getGrid()[0][2] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[1][0] == "X" && gameBoardModule.getGrid()[1][1] == "X" && gameBoardModule.getGrid()[1][2] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[2][0] == "X" && gameBoardModule.getGrid()[2][1] == "X" && gameBoardModule.getGrid()[2][2] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[0][0] == "X" && gameBoardModule.getGrid()[1][0] == "X" && gameBoardModule.getGrid()[2][0] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[0][1] == "X" && gameBoardModule.getGrid()[1][1] == "X" && gameBoardModule.getGrid()[2][1] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[0][2] == "X" && gameBoardModule.getGrid()[1][2] == "X" && gameBoardModule.getGrid()[2][2] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[0][0] == "X" && gameBoardModule.getGrid()[1][1] == "X" && gameBoardModule.getGrid()[2][2] == "X"){
+            return "player1";
+        }else if(gameBoardModule.getGrid()[0][2] == "X" && gameBoardModule.getGrid()[1][1] == "X" && gameBoardModule.getGrid()[2][0] == "X"){
+            return "player1";
+        }
+        //Check for "O" win
+        else if(gameBoardModule.getGrid()[0][0] == "O" && gameBoardModule.getGrid()[0][1] == "O" && gameBoardModule.getGrid()[0][2] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[1][0] == "O" && gameBoardModule.getGrid()[1][1] == "O" && gameBoardModule.getGrid()[1][2] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[2][0] == "O" && gameBoardModule.getGrid()[2][1] == "O" && gameBoardModule.getGrid()[2][2] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[0][0] == "O" && gameBoardModule.getGrid()[1][0] == "O" && gameBoardModule.getGrid()[2][0] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[0][1] == "O" && gameBoardModule.getGrid()[1][1] == "O" && gameBoardModule.getGrid()[2][1] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[0][2] == "O" && gameBoardModule.getGrid()[1][2] == "O" && gameBoardModule.getGrid()[2][2] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[0][0] == "O" && gameBoardModule.getGrid()[1][1] == "O" && gameBoardModule.getGrid()[2][2] == "O"){
+            return "player2";
+        }else if(gameBoardModule.getGrid()[0][2] == "O" && gameBoardModule.getGrid()[1][1] == "O" && gameBoardModule.getGrid()[2][0] == "O"){
+            return "player2";
+        }
     }
 
-    const getIsGameActive = () => isGameActive;
+    
 
+    const getIsGameActive = () => isGameActive;
     const getCurrentPlayerName = () => currentPlayer.name;
     const getCurrentPlayerSymbol = () => currentPlayer.symbol;
+    
 
     //public
     return {
@@ -53,12 +91,15 @@ const gameFlowModule = (() => {
         switchPlayer,
         startGame,
         endGame,
+        checkWin,
+       
     }
 })();
 
 const squares = document.querySelectorAll(".grid-item");
 
 gameFlowModule.startGame();
+
 squares.forEach((square) =>{
     square.addEventListener("click", () => {
     if(gameFlowModule.getIsGameActive() === true){
@@ -71,6 +112,9 @@ squares.forEach((square) =>{
                 gameBoardModule.getGrid()[row][col] = gameFlowModule.getCurrentPlayerSymbol();
                 gameFlowModule.switchPlayer();
                 console.log(gameBoardModule.getGrid());
+                if(gameFlowModule.checkWin() == "player1"){
+                    console.log("player 1 dub");
+                }
         }
 
         }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
@@ -79,11 +123,18 @@ squares.forEach((square) =>{
                 gameBoardModule.getGrid()[row][col] = gameFlowModule.getCurrentPlayerSymbol();
                 gameFlowModule.switchPlayer();
                 console.log(gameBoardModule.getGrid());
+                gameFlowModule.checkWin();
+                if(gameFlowModule.checkWin() == "player2"){
+                    console.log("player 2 dub");
+                }
+
         }
         }
      }
     }) 
 })
+
+
 
 
 
