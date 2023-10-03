@@ -62,23 +62,28 @@ gameFlowModule.startGame();
 squares.forEach((square) =>{
     square.addEventListener("click", () => {
     if(gameFlowModule.getIsGameActive() === true){
+        const row = square.dataset.row;
+        const col = square.dataset.col;
+
         if (gameFlowModule.getCurrentPlayerName() === "Player1"){
             if(square.textContent.trim() === ""){
                 square.textContent = gameFlowModule.getCurrentPlayerSymbol();
+                gameBoardModule.getGrid()[row][col] = gameFlowModule.getCurrentPlayerSymbol();
                 gameFlowModule.switchPlayer();
+                console.log(gameBoardModule.getGrid());
         }
 
         }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
             if(square.textContent.trim() === ""){
-            
                 square.textContent = gameFlowModule.getCurrentPlayerSymbol();
+                gameBoardModule.getGrid()[row][col] = gameFlowModule.getCurrentPlayerSymbol();
                 gameFlowModule.switchPlayer();
+                console.log(gameBoardModule.getGrid());
         }
         }
      }
     }) 
 })
 
-//if currentPlayer === player 1; next click places an X
-//if currentPlayer === player 2; next click places an O
+
 
