@@ -22,7 +22,7 @@ const player2 = playerFactory("Player2", "O");
 const gameFlowModule = (() => {
     let isGameActive = null;
     let currentPlayer = null;
-    let winner = null;
+    let isDraw = true;
 
     const switchPlayer = () => {
         currentPlayer = (currentPlayer === player1) ? player2 : player1;
@@ -74,9 +74,18 @@ const gameFlowModule = (() => {
         }else if(gameBoardModule.getGrid()[0][2] == "O" && gameBoardModule.getGrid()[1][1] == "O" && gameBoardModule.getGrid()[2][0] == "O"){
             return "player2";
         }
+
+        else if(gameBoardModule.getGrid()[0][0] != 0 && gameBoardModule.getGrid()[0][1] != 0 && gameBoardModule.getGrid()[0][2] != 0 &&
+                gameBoardModule.getGrid()[1][0] != 0 && gameBoardModule.getGrid()[1][1] != 0 && gameBoardModule.getGrid()[1][2] != 0 &&
+                gameBoardModule.getGrid()[2][0] != 0 && gameBoardModule.getGrid()[2][1] != 0 && gameBoardModule.getGrid()[2][2] != 0){
+                        console.log("draw");
+            }
     }
 
-    
+    const checkDraw = () => {
+        
+    }
+
 
     const getIsGameActive = () => isGameActive;
     const getCurrentPlayerName = () => currentPlayer.name;
@@ -92,6 +101,7 @@ const gameFlowModule = (() => {
         startGame,
         endGame,
         checkWin,
+        checkDraw,
        
     }
 })();
@@ -113,8 +123,11 @@ squares.forEach((square) =>{
                 gameFlowModule.switchPlayer();
                 console.log(gameBoardModule.getGrid());
                 if(gameFlowModule.checkWin() == "player1"){
+                    gameFlowModule.endGame();
+                    console.log(gameFlowModule.getIsGameActive());
                     console.log("player 1 dub");
                 }
+                gameFlowModule.checkDraw();
         }
 
         }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
@@ -125,14 +138,18 @@ squares.forEach((square) =>{
                 console.log(gameBoardModule.getGrid());
                 gameFlowModule.checkWin();
                 if(gameFlowModule.checkWin() == "player2"){
+                    gameFlowModule.endGame();
+                    console.log(gameFlowModule.getIsGameActive());
                     console.log("player 2 dub");
                 }
+                gameFlowModule.checkDraw();
 
         }
         }
      }
     }) 
 })
+
 
 
 
