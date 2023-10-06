@@ -79,7 +79,7 @@ const gameFlowModule = (() => {
         else if(gameBoardModule.getGrid()[0][0] != 0 && gameBoardModule.getGrid()[0][1] != 0 && gameBoardModule.getGrid()[0][2] != 0 &&
                 gameBoardModule.getGrid()[1][0] != 0 && gameBoardModule.getGrid()[1][1] != 0 && gameBoardModule.getGrid()[1][2] != 0 &&
                 gameBoardModule.getGrid()[2][0] != 0 && gameBoardModule.getGrid()[2][1] != 0 && gameBoardModule.getGrid()[2][2] != 0){
-                        console.log("draw");
+                        return "draw";
             }
     }
 
@@ -87,7 +87,6 @@ const gameFlowModule = (() => {
     const getCurrentPlayerName = () => currentPlayer.name;
     const getCurrentPlayerSymbol = () => currentPlayer.symbol;
     
-
     //public
     return {
         getIsGameActive,
@@ -120,8 +119,11 @@ squares.forEach((square) =>{
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
                     console.log("player 1 dub");
+                }else if(gameFlowModule.checkWin() == "draw"){
+                    gameFlowModule.endGame();
+                    console.log(gameFlowModule.getIsGameActive());
+                    console.log("DRAW");
                 }
-                gameFlowModule.checkDraw();
         }
 
         }else if(gameFlowModule.getCurrentPlayerName() === "Player2"){
@@ -135,9 +137,11 @@ squares.forEach((square) =>{
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
                     console.log("player 2 dub");
+                }else if(gameFlowModule.checkWin() == "draw"){
+                    gameFlowModule.endGame();
+                    console.log(gameFlowModule.getIsGameActive());
+                    console.log("DRAW");
                 }
-                gameFlowModule.checkDraw();
-
         }
         }
      }
