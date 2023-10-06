@@ -16,6 +16,8 @@ const playerFactory = (name, symbol) => {
     return {name, symbol};
 }
 
+
+
 const player1 = playerFactory("Player1", "X");
 const player2 = playerFactory("Player2", "O");
 
@@ -35,6 +37,7 @@ const gameFlowModule = (() => {
 
     const endGame = () => {
         isGameActive = false;
+        resetBoard();
     };
 
     const checkWin = () => { 
@@ -83,8 +86,18 @@ const gameFlowModule = (() => {
             }
     }
 
+    const resetBoard = () => {
+        for(let i = 0; i < gameBoardModule.getGrid().length; i++){
+            for(let j = 0; j < gameBoardModule.getGrid()[i].length; j++){
+                gameBoardModule.getGrid()[i][j] = 0;
+            }
+        }
+    }
+
     const getIsGameActive = () => isGameActive;
+
     const getCurrentPlayerName = () => currentPlayer.name;
+
     const getCurrentPlayerSymbol = () => currentPlayer.symbol;
     
     //public
@@ -96,6 +109,7 @@ const gameFlowModule = (() => {
         startGame,
         endGame,
         checkWin,
+        resetBoard,
     }
 })();
 
