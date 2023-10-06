@@ -118,11 +118,15 @@ squares.forEach((square) =>{
                 if(gameFlowModule.checkWin() == "player1"){
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
-                    console.log("player 1 dub");
+                    setTimeout(function(){
+                        alert("Player 1 dub!");
+                    }, 250);
                 }else if(gameFlowModule.checkWin() == "draw"){
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
-                    console.log("DRAW");
+                    setTimeout(function(){
+                        alert("It's a draw!");
+                    }, 250);
                 }
         }
 
@@ -136,20 +140,18 @@ squares.forEach((square) =>{
                 if(gameFlowModule.checkWin() == "player2"){
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
-                    console.log("player 2 dub");
+                    setTimeout(function(){
+                        alert("Player 2 dub!");
+                    }, 250);
                 }else if(gameFlowModule.checkWin() == "draw"){
                     gameFlowModule.endGame();
                     console.log(gameFlowModule.getIsGameActive());
-                    console.log("DRAW");
+                    setTimeout(function(){
+                        alert("It's a draw!");
+                    }, 250);
                 }
         }
         }
      }
     }) 
 })
-
-
-
-
-
-
