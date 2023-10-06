@@ -75,17 +75,13 @@ const gameFlowModule = (() => {
             return "player2";
         }
 
+        //Check for a draw
         else if(gameBoardModule.getGrid()[0][0] != 0 && gameBoardModule.getGrid()[0][1] != 0 && gameBoardModule.getGrid()[0][2] != 0 &&
                 gameBoardModule.getGrid()[1][0] != 0 && gameBoardModule.getGrid()[1][1] != 0 && gameBoardModule.getGrid()[1][2] != 0 &&
                 gameBoardModule.getGrid()[2][0] != 0 && gameBoardModule.getGrid()[2][1] != 0 && gameBoardModule.getGrid()[2][2] != 0){
                         console.log("draw");
             }
     }
-
-    const checkDraw = () => {
-        
-    }
-
 
     const getIsGameActive = () => isGameActive;
     const getCurrentPlayerName = () => currentPlayer.name;
@@ -101,8 +97,6 @@ const gameFlowModule = (() => {
         startGame,
         endGame,
         checkWin,
-        checkDraw,
-       
     }
 })();
 
