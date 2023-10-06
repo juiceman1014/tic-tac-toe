@@ -38,6 +38,9 @@ const gameFlowModule = (() => {
     const endGame = () => {
         isGameActive = false;
         resetBoard();
+        setTimeout(() => {
+            resetDisplay();
+        }, 250)
     };
 
     const checkWin = () => { 
@@ -94,6 +97,12 @@ const gameFlowModule = (() => {
         }
     }
 
+    const resetDisplay = () => {
+        squares.forEach((square) => {
+            square.textContent = "";
+        });
+    };
+
     const getIsGameActive = () => isGameActive;
 
     const getCurrentPlayerName = () => currentPlayer.name;
@@ -110,6 +119,7 @@ const gameFlowModule = (() => {
         endGame,
         checkWin,
         resetBoard,
+        resetDisplay,
     }
 })();
 
@@ -164,6 +174,7 @@ squares.forEach((square) =>{
                         alert("It's a draw!");
                     }, 250);
                 }
+                
         }
         }
      }
